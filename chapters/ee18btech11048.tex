@@ -14,7 +14,7 @@ G\brak{s} &= \frac{10}{s\brak{1+0.5s}\brak{1+.01s}}
 \end{align}
 \begin{table}[!ht]
 \centering
-\input{./tables/ee18btech11048_table.tex}
+\input{./tables/ee18btech11048_tebles.tex}
 \caption{Zeros and Poles}
 \label{table:ee18btech11048}
 \end{table}\\
@@ -32,17 +32,28 @@ The python code to obtain the graphs:
 codes/ee18btech11048.py
 \end{lstlisting}
 
-\item Finding the Phase Margin \brak{PM}.
+\item {\em Gain} and {\em Phase} of Transfer Function 
 \begin{align}
 G\brak{j\omega} &= \frac{10}{j\omega\brak{1+0.5j\omega}\brak{1+.01j\omega}}
 \end{align}
+Gain:
 \begin{align}
-{\em PM} = \angle G(\j\omega_{gc}) + 180\degree 
+    \frac{100}{\omega\sqrt{\brak{0.5\omega}^2+1}\sqrt{\brak{0.01\omega}^2+1}}
+\label{eq:ee18btech11048_2}
+\end{align}{}
+Phase:
+\begin{multline}
+\tan^{-1} \brak{0}-\tan^{-1} \brak{\frac{\omega}{0}} - \tan^{-1} \brak{\frac{\omega}{2}}- \\\tan^{-1} \brak{\frac{\omega}{100}} 
+\label{eq:ee18btech11048_3}
+\end{multline}
+\item Finding the Phase Margin\brak {PM}
+\begin{align}
+{\em PM} = \angle G(\j\omega_{gc}) + 180\degree \\
+\omega_{gc}=\text{Gain Crossover Frequency}
 \end{align}\\
- where $\omega_{gc}$ is frequency when gain = 1 .\\
 \solution
 \begin{align}
-    \frac{100}{\omega\sqrt{\brak{0.5\omega}^2+1}\sqrt{\brak{0.01\omega}^2+1}} &= 1
+    \frac{100}{\omega_{gc}\sqrt{\brak{0.5\omega_{gc}}^2+1}\sqrt{\brak{0.01\omega_{gc}}^2+1}} &= 1
 \label{eq:ee18btech11048_2}
 \end{align}{}
 Solving Eq. \eqref{eq:ee18btech11048_2} {\em or} from Fig \ref{fig:ee18btech11048} :
@@ -57,22 +68,22 @@ PM &= 22.8
 
 \item Finding the Gain Margin \brak{GM}\\
 \begin{align}
-{\em GM} = 0 -G(\j\omega_{pc}) db 
+{\em GM} = 0 -G(\j\omega_{pc}) db \\
+\omega_{pc}=\text{Phase Crossover Frequency}
 \end{align}
- where $\omega_{pc}$ is frequency when phase = -180\degree
-\\
+ \\
 \solution
+
 \begin{multline}
-\tan^{-1} \brak{0}-\tan^{-1} \brak{\frac{\omega}{0}} - \tan^{-1} \brak{\frac{\omega}{2}}- \\\tan^{-1} \brak{\frac{\omega}{100}} = -180\degree
+\tan^{-1} \brak{0}-\tan^{-1} \brak{\frac{\omega_{pc}}{0}} - \tan^{-1} \brak{\frac{\omega_{pc}}{2}}- \\\tan^{-1} \brak{\frac{\omega_{pc}}{100}} = -180\degree
 \label{eq:ee18btech11048_3}
 \end{multline}
-
 Solving Eq. \eqref{eq:ee18btech11048_3} {\em or} from Fig \ref{fig:ee18btech11048} :
 
 \begin{align}
 \implies
-\omega &=  14.1  \\
--G(\j\omega) db &= -20.2 \\
+\omega_{pc} &=  14.1 \\
+ -\text{G}(\j\omega) db &= -20.2 \\
 \implies
 GM &= 20.2 db
 \end{align}
