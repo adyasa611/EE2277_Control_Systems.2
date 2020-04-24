@@ -9,6 +9,12 @@ from scipy import signal
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import *
 
+#if using termux
+import subprocess
+import shlex
+#end if
+
+
 Num =[2000]
 Den =[1,102,200,0]
 s1 = signal.lti(Num,Den) 
@@ -32,3 +38,10 @@ plt.xlabel('Phase Plot')
 plt.xlabel('Frequency')
 plt.grid()
 plt.show()
+
+#if using termux
+plt.savefig('./figs/ee18btech11001/ee18btech11001_2.pdf')
+plt.savefig('./figs/ee18btech11001/ee18btech11001_2.eps')
+subprocess.run(shlex.split("termux-open ./figs/ee18btech11001/ee18btech11001_2.pdf"))
+#else
+#plt.show()
